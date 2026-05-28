@@ -1,0 +1,17 @@
+name: QDK Component Deployment
+run-name: QDK Runner
+on: [push]
+
+jobs:
+  Explore-Gitea-Actions:
+    runs-on: host
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Deploy our code
+        run: |
+          cd ${{ gitea.workspace }}
+          ls
+          zip -r ../ml_repo.zip . -x \*artifacts\* build/\* docs/\* \*.venv\* \*.git\* \*__pycache__\* \*_translations_*.json
+          aws s3 cp ../ml_repo.zip s3://${{ vars.S3_BUCKET }}/${{ vars.S3_KEY }}
+      - run: echo "job.status is ${{ job.status }}."        
