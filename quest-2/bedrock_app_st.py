@@ -103,19 +103,18 @@ if current_model == "Stable Image Core":
 
     #  Generate image from prompt,
     if st.button("Generate Image"):
-        # # TODO generate image
-
-        # image = None
-        # st.image(image)
+        image_base64 = generate_image_sd(prompt)
+        image = base64_to_pil(image_base64)
+        st.image(image)
 
 if current_model == "Amazon Nova Lite":
-    # TODO System Prompt input
+    # System Prompt input
+    system_prompt = st.text_area("Enter system prompt", value="You are a helpful assistant.")
 
-    # TODO Prompt input
+    # Prompt input
+    prompt = st.text_area("Enter prompt")
 
     #  Generate text from prompt,
     if st.button("Call Nova"):
-        # TODO generate text
-
-        generated_text = "REPLACE WITH Generated text"
+        generated_text = call_nova_lite(system_prompt, prompt)
         st.markdown(generated_text)
