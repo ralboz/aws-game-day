@@ -5,8 +5,27 @@
       "args": [
         "-y",
         "--registry=https://registry.npmjs.org/",
-        "chrome-devtools-mcp@latest", 
-        "--browser-url=http://127.0.0.1:9222"],
+        "chrome-devtools-mcp@latest",
+        "--browser-url=http://127.0.0.1:9222"
+      ],
+      "autoApprove": [
+        "list_pages"
+      ]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "autoApprove": []
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "--registry=https://registry.npmjs.org/",
+        "@upstash/context7-mcp@latest"
+      ],
       "autoApprove": []
     }
   }
